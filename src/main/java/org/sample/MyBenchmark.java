@@ -32,6 +32,7 @@
 package org.sample;
 
 import com.iabtcf.decoder.TCModelDecoder;
+import com.iabtcf.decoder.TCModelDecoderImpl;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Mode;
@@ -51,11 +52,31 @@ import java.util.concurrent.TimeUnit;
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 public class MyBenchmark {
 
-    private static final String consentString = "COukWFXOukWFXLnACAENAPCIAKAAAKAAACiQFoQAQALgWhABAAuAAA.IFoEUQQgAIQwgIwQABAEAAAAOIAACAIAAAAQAIAgEAACEAAAAAgAQBAAAAAAAGBAAgAAAAAAAFAAECAAAgAAQARAEQAAAAAJAAIAAgAAAYQEAAAQmAgBC3ZAYzUw.QEUwAQALgA";
+    private static final String coreString = "COukWFXOukWFXLnACAENAPCIAKAAAKAAACiQFoQAQALgWhABAAuAAA";
+
+    private static final String coreWithPublisher = coreString + ".cAAAAAAAITg=";
+
+    private static final String fullString =
+            coreString + "." +
+            "IFoEUQQgAIQwgIwQABAEAAAAOIAACAIAAAAQAIAgEAACEAAAAAgAQBAAAAAAAGBAAgAAAAAAAFAAECAAAgAAQARAEQAAAAAJAAIAAgAAAYQEAAAQmAgBC3ZAYzUw." +
+            "QEUwAQALgA." +
+            "cAAAAAAAITg=";
+
+    TCModelDecoder decoder = new TCModelDecoderImpl();
 
     @Benchmark
-    public void testFirstString(Blackhole blackhole) {
-        blackhole.consume(TCModelDecoder.decode(consentString));
+    public void testCoreString(Blackhole blackhole) {
+        blackhole.consume(decoder.decode(coreString));
+    }
+
+    @Benchmark
+    public void testCorePublisherString(Blackhole blackhole) {
+        blackhole.consume(decoder.decode(coreWithPublisher));
+    }
+
+    @Benchmark
+    public void testFullString(Blackhole blackhole) {
+        blackhole.consume(decoder.decode(fullString));
     }
 
     public static void main(String[] args) throws RunnerException {
@@ -63,7 +84,8 @@ public class MyBenchmark {
                 .include(MyBenchmark.class.getSimpleName())
                 .warmupIterations(10)
                 .measurementIterations(10)
-                .forks(1)
+                .threads(4)
+                .forks(2)
                 .build();
 
         new Runner(opt).run();

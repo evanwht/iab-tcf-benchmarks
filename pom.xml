@@ -61,7 +61,7 @@ THE POSSIBILITY OF SUCH DAMAGE.
             <groupId>..</groupId>
             <artifactId>..</artifactId>
             <scope>system</scope>
-            <systemPath>${basedir}/repo/evanwht1-double-scan-byte-array-boxed-sets.jar</systemPath>
+            <systemPath>${basedir}/repo/sleiman-single-scan.jar</systemPath>
         </dependency>
     </dependencies>
 
