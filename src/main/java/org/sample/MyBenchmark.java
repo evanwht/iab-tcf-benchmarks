@@ -32,7 +32,6 @@
 package org.sample;
 
 import com.iabtcf.decoder.TCModelDecoder;
-import com.iabtcf.decoder.TCModelDecoderImpl;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Mode;
@@ -62,21 +61,19 @@ public class MyBenchmark {
             "QEUwAQALgA." +
             "cAAAAAAAITg=";
 
-    TCModelDecoder decoder = new TCModelDecoderImpl();
-
     @Benchmark
     public void testCoreString(Blackhole blackhole) {
-        blackhole.consume(decoder.decode(coreString));
+        blackhole.consume(TCModelDecoder.decode(coreString));
     }
 
     @Benchmark
     public void testCorePublisherString(Blackhole blackhole) {
-        blackhole.consume(decoder.decode(coreWithPublisher));
+        blackhole.consume(TCModelDecoder.decode(coreWithPublisher));
     }
 
     @Benchmark
     public void testFullString(Blackhole blackhole) {
-        blackhole.consume(decoder.decode(fullString));
+        blackhole.consume(TCModelDecoder.decode(fullString));
     }
 
     public static void main(String[] args) throws RunnerException {
@@ -85,7 +82,7 @@ public class MyBenchmark {
                 .warmupIterations(10)
                 .measurementIterations(10)
                 .threads(4)
-                .forks(2)
+                .forks(1)
                 .build();
 
         new Runner(opt).run();
