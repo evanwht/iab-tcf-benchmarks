@@ -47,23 +47,16 @@ Names correspond to branches in repos for the most part. The actual mapping is a
 - laktech-stream
     - laktech:v2-lazy-segment-input-stream
     - wraps incoming string in a LazySegmentFactory that will read each segment out when called for
-- evanwht1-single
-    - evanwht1:evanwht1/single-scan
-    - rebase of evanwht1-double-bitsets onto sleiman-single-scan
-- evanwht1-byte-buffers
-    - evanwht1:evanwht1-byte-buffers
-    - Same as evanwht1-double-bitsets but uses a ByteBuffer instead of calling String.split() in TCModelDecoder
-- evanwht1-offsets
-    - evanwht1:fieldsWithOffsets
-    - Defines offsets with fields where possible and passes those offsets to the bitvector
-- evanwht1-double-bitsets
+- evanwht1-tvcf2
     - evanwht1:tcfv2-decode-with-bitvector
     - Bit vector maintains position while reading and replaces Set<Integer> in POJO's with BitSet to query for vendors.
     double is in reference to double scanning the incoming stream (String.split())
-- evanwht1-double-boxed
-    - evanwht1:bitvectorWithPosition
-    - Same as evanwht1-double-bitsets with but still uses Set<Integer>. double is in reference to double scanning the 
-    incoming stream (String.split()).
+- evanwht1-offsets
+    - evanwht1:fieldsWithOffsets
+    - Defines offsets with fields where possible and passes those offsets to the bitvector
+- evanwht1-single
+    - evanwht1:evanwht1/single-scan
+    - rebase of evanwht1-tcfv2 onto sleiman-single
 
 Decoding of the Core String Only  
 ![](resources/Core-Only.png)
