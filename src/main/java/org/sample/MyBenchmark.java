@@ -61,6 +61,8 @@ public class MyBenchmark {
             "QEUwAQALgA." +
             "cAAAAAAAITg=";
 
+//    TCModelDecoder decoder = new TCModelDecoderImpl();
+
     @Benchmark
     public void testCoreString(Blackhole blackhole) {
         blackhole.consume(TCModelDecoder.decode(coreString));

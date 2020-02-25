@@ -35,6 +35,13 @@ around 20 minutes to complete one version.
 
 ## Results
 
-Coming...
+Decoding of the Core String Only  
+![](resources/Core-Only.png)
+
+Decoding of a Core String and a Publisher TC Segment
+![](resources/Core-Publisher.png)
+
+Decoding of a full 4 segment string (Core String, OOB disclose + allowed Vendors, and publisher tc)
+![](resources/Full.png)
 
 
