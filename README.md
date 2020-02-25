@@ -1,6 +1,6 @@
-# iab-tcf String Decoding Benchmarks
+# iab-tcf v2 String Decoding Benchmarks
 
-Benchmarks for iab tcf string decoding and encoding
+Benchmarks for iab tcf v2 string decoding
 
 Versions tested:
 
@@ -10,7 +10,6 @@ Versions tested:
     - evanwht1/internalizeSets
     - evanwht1/fieldsWithOffsets
     - laktech/v2-lazy-segment-input-stream
-        - evanwht1/lazy-input
     - sleiman/single-scan
         - evanwht1/single-scan
     
@@ -24,7 +23,7 @@ Versions tested:
 - 10 warmup iterations + 10 measurement iterations
 - 4 threads + 1 fork
 
-## How To User
+## How To Use
 
 If you would like to run these benchmarks your self, choose which version you would like and modify the pom to import
 that version. You may need to modify the [MyBenchmark](src/main/java/org/sample/MyBenchmark.java) class.
@@ -32,6 +31,9 @@ that version. You may need to modify the [MyBenchmark](src/main/java/org/sample/
 You can change the options defined in the main method but be sure to keep those consistent between runs of different
 versions. Finally, run the main method and jmh will start running the 3 benchmarks. The current options tend to take
 around 20 minutes to complete one version.
+
+You can build this project with `mvn clean packge` and run the resulting jar from the command line as well. To do so,
+run `java -jar target/benchmarks.jar -wi 10 -i 10 -f 1 -t 4`.
 
 ## Results
 
