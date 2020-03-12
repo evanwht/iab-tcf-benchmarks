@@ -1,4 +1,5 @@
-# iab-tcf v2 String Decoding Benchmarks
+# iab-tcf v2 String Decoding Benchmarks (OUTDATED)
+
 
 Benchmarks for iab tcf v2 string decoding
 
